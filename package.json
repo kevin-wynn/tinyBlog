@@ -1,0 +1,30 @@
+{
+  "name": "tinyblog",
+  "version": "1.0.0",
+  "description": "Tiny blog is a lightweight node and mongodb based blog",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robo-House/tinyBlog.git"
+  },
+  "keywords": [
+    "tiny",
+    "blog",
+    "small",
+    "lightweight",
+    "node",
+    "mongo",
+    "writing",
+    "author",
+    "comment"
+  ],
+  "author": "Kevin Wynn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Robo-House/tinyBlog/issues"
+  },
+  "homepage": "https://github.com/Robo-House/tinyBlog#readme"
+}
