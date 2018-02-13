@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{var t=TB.util.getById("newUserButton"),e=TB.util.getById("newUserForm");TB.util.getById("saveUserButton");t.addEventListener("click",()=>{e.classList.contains("hidden")?TB.util.changeButtonTextAndColor(t,"Cancel Adding User","#E87E04"):TB.util.changeButtonTextAndColor(t,"Add New User","#3498DB"),TB.util.toggleVisibility(e)})});

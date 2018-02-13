@@ -4,6 +4,7 @@
   "description": "Tiny blog is a lightweight node and mongodb based blog",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,5 +27,21 @@
   "bugs": {
     "url": "https://github.com/Robo-House/tinyBlog/issues"
   },
-  "homepage": "https://github.com/Robo-House/tinyBlog#readme"
+  "homepage": "https://github.com/Robo-House/tinyBlog#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.4",
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "grunt": "^1.0.2",
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-uglify-es": "^3.3.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-express-server": "^0.5.3"
+  }
 }

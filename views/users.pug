@@ -1,0 +1,23 @@
+include mixins/forms.pug
+
+html
+  include partials/header.pug
+  body.users
+    include partials/navigation.pug
+    div.container
+      h1 Users
+      div.toolbar
+        ul
+          li#newUserButton.action Add New User
+      div.new-user
+        form#newUserForm.hidden(action="/users/createUser" method="POST").tb-form
+          +formRow('text', 'name', 'name', 'Name')
+          +formRow('text', 'email', 'email', 'Email', true)
+          +formRow('text', 'username', 'username', 'Username', true)
+          +formRow('text', 'password', 'password', 'Password', true)
+          +dateRow('dob', 'Date of Birth')
+          +buttonRow('submit', 'submit', 'saveUserButton', 'Save')
+      div.users
+        for user in users
+          p #{user.name}
+    include partials/footer.pug
