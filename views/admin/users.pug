@@ -1,10 +1,10 @@
-include mixins/forms.pug
+include ../mixins/forms.pug
 
 html
   include partials/header.pug
   body.users
     include partials/navigation.pug
-    div.container
+    div.container.users-body
       h1 Users
       div.toolbar
         ul
@@ -17,6 +17,7 @@ html
           +formRow('text', 'password', 'password', 'Password', true)
           +dateRow('dob', 'Date of Birth')
           +buttonRow('submit', 'submit', 'saveUserButton', 'Save')
+      p Here are all your users
       div.users
         for user in users
           p #{user.name}

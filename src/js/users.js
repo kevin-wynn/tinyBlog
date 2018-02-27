@@ -4,14 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
   var newUserform = TB.util.getById('newUserForm');
   var saveUserButton = TB.util.getById('saveUserButton');
 
-  newUserButton.addEventListener('click', () => {
-    if(!newUserform.classList.contains('hidden')) {
-      TB.util.changeButtonTextAndColor(newUserButton, 'Add New User', '#3498DB');
-    } else {
-      TB.util.changeButtonTextAndColor(newUserButton, 'Cancel Adding User', '#E87E04');
-    }
+  if(newUserButton) {
+    newUserButton.addEventListener('click', () => {
+      if(!newUserform.classList.contains('hidden')) {
+        TB.util.changeButtonTextAndColor(newUserButton, 'Add New User', '#3498DB');
+      } else {
+        TB.util.changeButtonTextAndColor(newUserButton, 'Cancel Adding User', '#E87E04');
+      }
 
-    TB.util.toggleVisibility(newUserform);
-  });
+      TB.util.toggleVisibility(newUserform);
+    });
+  }
 
 });

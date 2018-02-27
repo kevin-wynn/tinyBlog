@@ -62,6 +62,36 @@ var TB = {
 
     toggleVisibility: (el) => {
       el.classList.toggle('hidden');
+    },
+
+    objectifyForm: (formArray) => {
+      var returnArray = {};
+      for (var i = 0; i < formArray.length; i++){
+        returnArray[formArray[i]['name']] = formArray[i]['value'];
+      }
+      return returnArray;
     }
+  },
+
+  request = {
+
+    /**
+     * [success description]
+     * @param  {[type]} el             [description]
+     * @param  {[type]} successMessage [description]
+     * @return {[type]}                [description]
+     */
+    success: (el, successMessage) => {
+      if(el.classList.contains('hidden')) {
+        TB.util.toggleVisibility(el);
+        el.innerHTML = successMessage;
+      }
+    }
+  },
+
+  admin = {
+
+    
+
   }
 }

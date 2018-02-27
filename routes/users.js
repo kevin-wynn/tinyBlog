@@ -14,7 +14,7 @@ const User = require('../models/users.js');
 
 router.get('/', (req, res) => {
   User.find({}, (err, users)=> {
-    res.render('users', {users: users});
+    res.render('admin/users', {users: users});
   })
 })
 

@@ -1,5 +1,4 @@
 mixin formRow(type, name, id, labelText, required)
-  - var isRequired = required;
   div.row
     label(for=name).tb-label #{labelText}
     if isRequired
@@ -7,6 +6,12 @@ mixin formRow(type, name, id, labelText, required)
         input(name=name id=id type=type).tb-input
     else
       input(name=name id=id type=type).tb-input
+      
+mixin formTextArea(name, id, labelText)
+  div.row
+    label(for=name).tb-label #{labelText}
+    br
+    textarea(name=name id=id).tb-textarea
 
 mixin dateRow(name, labelText, required)
   - var isRequired = required;
