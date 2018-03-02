@@ -1,11 +1,11 @@
 mixin formRow(type, name, id, labelText, required)
   div.row
-    label(for=name).tb-label #{labelText}
+    label(for=name).tb-label.col.three #{labelText}
     if isRequired
       span.required
-        input(name=name id=id type=type).tb-input
+        input(name=name id=id type=type).tb-input.col.nine
     else
-      input(name=name id=id type=type).tb-input
+      input(name=name id=id type=type).tb-input.col.nine
       
 mixin formTextArea(name, id, labelText)
   div.row
@@ -16,12 +16,12 @@ mixin formTextArea(name, id, labelText)
 mixin dateRow(name, labelText, required)
   - var isRequired = required;
   div.row
-    label(for=name).tb-label #{labelText}
+    label(for=name).tb-label.date.col.three #{labelText}
     if isRequired
       span.required
-        input(type='date' name=name).tb-input
+        input(type='date' name=name).tb-input.date.col.five
     else
-      input(type='date' name=name).tb-input
+      input(type='date' name=name).tb-input.date.col
 
 mixin buttonRow(type, name, id, buttonText)
   div.row
@@ -29,3 +29,17 @@ mixin buttonRow(type, name, id, buttonText)
 
 mixin form(action, method)
   form(action=action method=method).tb-form
+
+mixin inputSizeNumber(inputSize)
+  - if(inputSize == 1) return 'one'
+  - if(inputSize == 2) return 'two'
+  - if(inputSize == 3) return 'three'
+  - if(inputSize == 4) return 'four'
+  - if(inputSize == 5) return 'five'
+  - if(inputSize == 6) return 'six'
+  - if(inputSize == 7) return 'seven'
+  - if(inputSize == 8) return 'eight'
+  - if(inputSize == 9) return 'nine'
+  - if(inputSize == 10) return 'ten'
+  - if(inputSize == 11) return 'eleven'
+  - if(inputSize == 12) return 'twelve'

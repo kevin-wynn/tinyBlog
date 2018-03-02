@@ -1,0 +1,72 @@
+.tb-form {
+
+  .tb-input {
+    height: 47px;
+    padding: 5px 5px 1px 5px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    outline: 0;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    transition: .2s ease all;
+    color: #999;
+    &:active {
+      outline: 0;
+    }
+    &:focus {
+      border-bottom: 1px solid @link-blue;
+    }
+    &.date {
+      border-bottom: 0;
+    }
+  }
+
+  .tb-label {
+    line-height: 12px;
+    border-bottom: 1px solid #ccc;
+    &.date {
+      border-bottom: 0;
+    }
+  }
+
+  .tb-textarea {
+    width: 500px;
+    height: 300px;
+  }
+
+  .detail-break {
+    margin-bottom: 15px;
+    font-size: 110%;
+    span {
+      font-style: italic;
+    }
+  }
+}
+
+.tb-button {
+  display: inline-block;
+  background: @link-blue;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 2px;
+  border: 0;
+  outline: 0;
+  font-size: 16px;
+  transition: .2s ease all;
+  &:hover {
+    background: darken(@link-blue, 10%);
+  }
+}
+
+.toolbar {
+  .action {
+    display: inline-block;
+    background: @link-blue;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 2px;
+  }
+}

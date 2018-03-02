@@ -1,0 +1,13 @@
+include mixins/forms.pug
+
+html
+  include partials/header.pug
+  body.login-home
+    include partials/navigation.pug
+    div.container.login-body
+      h1 Login
+      form#loginForm.tb-form
+        +formRow('text', 'username', 'username', 'Username', true)
+        +formRow('password', 'password', 'password', 'Password', true)
+      +buttonRow('button', 'login', 'loginButton', 'Log In')
+  include partials/footer.pug

@@ -1,5 +1,6 @@
 /**
  * TinyBlog custom functionality
+ *
  * @type {Object}
  */
 
@@ -7,8 +8,9 @@ var TB = {
   util = {
     /**
      * Basic get function to get an element by id
+     *
      * @param  {string} id the id string to look for
-     * @return {el} the element found
+     * @return {el}        the element found
      */
     getById: (id) => {
       return document.getElementById(id);
@@ -16,8 +18,9 @@ var TB = {
 
     /**
      * Change a button's text
-     * @param  {string} el the element to change
-     * @param  {string} newText the new text to update to
+     *
+     * @param {string} el      the element to change
+     * @param {string} newText the new text to update to
      */
     changeButtonText: (el, newText) => {
       el.innerHTML=newText;
@@ -25,9 +28,10 @@ var TB = {
 
     /**
      * Change a button's text and background color
-     * @param  {string} el the element to change
-     * @param  {string} newText the new text to update to
-     * @param  {string} color the hex value background color to change to
+     *
+     * @param {string} el      the element to change
+     * @param {string} newText the new text to update to
+     * @param {string} color   the hex value background color to change to
      */
     changeButtonTextAndColor = (el, newText, color) => {
       el.innerHTML=newText;
@@ -36,6 +40,7 @@ var TB = {
 
     /**
      * Shows an element from button click
+     *
      * @param  {string} el the element to show
      */
     showByButton: (el) => {
@@ -49,7 +54,8 @@ var TB = {
 
     /**
      * Hides an element on button click
-     * @param  {string} el the element to hide
+     *
+     * @param {string} el the element to hide
      */
     hideByButton: (el) => {
       for(var i=0; el.classList.length > i; i++) {
@@ -60,28 +66,71 @@ var TB = {
       }
     },
 
+    /**
+     * toggles a state of hidden on an object - removes or adds the hidden class
+     * @param  {string} el the element to toggle class on
+     */
     toggleVisibility: (el) => {
       el.classList.toggle('hidden');
     },
 
+    /**
+     * turn a form into a json object
+     *
+     * @param  {array}  formArray the form elements in an array
+     * @return {returnObj}        the object to return
+     */
     objectifyForm: (formArray) => {
-      var returnArray = {};
+      var returnObj = {};
       for (var i = 0; i < formArray.length; i++){
-        returnArray[formArray[i]['name']] = formArray[i]['value'];
+        returnObj[formArray[i]['name']] = formArray[i]['value'];
       }
-      return returnArray;
+      return returnObj;
     }
   },
 
   request = {
 
     /**
-     * [success description]
-     * @param  {[type]} el             [description]
-     * @param  {[type]} successMessage [description]
-     * @return {[type]}                [description]
+     * Request promise to make an XHR request with .then() and .catch() for response
+     * and error calls
+     *
+     * @param  {string} type    the type of request, post or get
+     * @param  {string} url     the url to make the request to
+     * @param  {object} params  the object params for a post or get
+     * @return {Promise}        the promise resolve or reject
      */
-    success: (el, successMessage) => {
+    request: (type, url, params) => {
+      return new Promise((resolve, reject) => {
+      var xhr = new XMLHttpRequest();
+        xhr.open(type, url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        if(type == 'POST') {
+          xhr.send(JSON.stringify(params));
+        } else if (type == 'GET') {
+          xhr.send();
+        }
+        xhr.onreadystatechange = function(){
+          if (xhr.readyState === 4){
+            if (xhr.status === 200){
+              var resp = xhr.responseText;
+              var respJson = JSON.parse(resp);
+              resolve(respJson);
+            } else {
+              reject(xhr.status);
+            }
+          }
+        }
+      });
+    },
+
+    /**
+     * Shows a success message on a given element by changing its innerHTML
+     *
+     * @param  {string} el              the element to show the message on
+     * @param  {string} successMessage  the success message to show
+     */
+    showSuccessMessageOnEl: (el, successMessage) => {
       if(el.classList.contains('hidden')) {
         TB.util.toggleVisibility(el);
         el.innerHTML = successMessage;
@@ -90,8 +139,6 @@ var TB = {
   },
 
   admin = {
-
-    
 
   }
 }

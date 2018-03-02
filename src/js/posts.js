@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  var newPostButton = TB.util.getById('newPostButton');
-  var newPostForm = TB.util.getById('newPostForm');
-  var savePostButton = TB.util.getById('savePostButton');
-  var newPostSuccess = TB.util.getById('newPostSuccess');
+  const newPostButton = TB.util.getById('newPostButton');
+  const newPostForm = TB.util.getById('newPostForm');
+  const savePostButton = TB.util.getById('savePostButton');
+  const newPostSuccess = TB.util.getById('newPostSuccess');
 
   if(newPostButton) {
     newPostButton.addEventListener('click', () => {
@@ -20,28 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if(savePostButton) {
     savePostButton.addEventListener('click', () => {
       const formData = TB.util.objectifyForm(newPostForm);
-      const req = new Request('/admin/posts/createPost', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+      TB.util.request('/admin/posts/createPost', 'POST', formData, function(resp) {
+        TB.request.showSuccessMessageOnEl(newPostSuccess, 'Post Saved');
       });
-
-      fetch(req)
-        .then(resp => {
-          if (resp.status === 200) {
-            TB.request.success(newPostSuccess, 'Post Saved');
-          } else {
-            throw new Error('Something went wrong on api server!');
-          }
-        })
-        .then(resp => {
-          console.debug(resp);
-        }).catch(err => {
-          console.error(err);
-        });
     })
   }
 

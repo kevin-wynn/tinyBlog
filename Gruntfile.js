@@ -43,16 +43,26 @@ module.exports = (grunt) => {
           'public/js/app.js': ['src/js/*.js', '!src/js/util.js']
         }
       }
-    }
+    },
+    concurrent: {
+      dev: [
+        'nodemon',
+        'watch'
+      ],
+      options: {
+        logConcurrentOutput: true
+      }
+    },
   });
 
   // load the tasks
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify-es');
+  grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks('grunt-nodemon');
 
   // Default task(s).
-  grunt.registerTask('default', ['nodemon','watch']);
+  grunt.registerTask('default', ['concurrent']);
 
 };
