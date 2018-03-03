@@ -1,8 +1,6 @@
 # tinyBlog
 A tiny mongo based blog
 
----
-
 ## Dependencies
 - Download and install [npm](https://www.npmjs.com/get-npm)
 - Download and install [mongodb](https://www.mongodb.com/download-center)
