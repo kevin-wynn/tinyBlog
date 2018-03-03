@@ -1,46 +1,16 @@
-extends ./layouts/default.pug
+extends layouts/default
 
-include mixins/forms.pug
+include partials/header
+include partials/splash
 
 block content
-  if site
-    
-  else
-    .new-setup.container
-      .row
-        .col.three
-        .col.six.intro-header
-          h1 Set Up Your tinyBlog
-          p Welcome to tinyBlog - the smallest most lightweight blog in the world, 
-            | lets get started.
-          br
-          p You'll need to set up your blog initially through this set up - this will create
-            | a config file in your root directory.
-      .row
-        .col.three
-        .col.six
-          #newSetupForm.tb-form
-            .detail-break
-              p Site Details
-              span.small Set up details that are available site-wide.
-            +formRow('text', 'title', 'title', 'Title:')
-            +formRow('text', 'url', 'url', 'Url:')
-            .detail-break
-              p Admin Details
-              span.small Set up details for your admin user, if you lose your password you will have to
-                | reset the admin account either manullay in your database or by deleting your config.js file
-                | in your root directory.
-            +formRow('text', 'username', 'username', 'User Name:')
-            +formRow('password', 'password', 'password', 'Password:')
-            +formRow('text', 'fullName', 'fullName', 'Full Name:')
-            +dateRow('dob', 'Date of Birth:')
-            .detail-break
-              p Database Details
-              span.small Set up details for your mongodb, you will need this for creating users and content
-                | The app is smart enough to use your localhost url during dev work, you can enter your
-                | production url here for ease of deployments.
-            +formRow('text', 'database-url', 'database-url', 'Url:')
-            +formRow('text', 'database-name', 'database-name', 'Name:')
-          +buttonRow('submit', 'submit', 'saveUserButton', 'Save')
-              
-      
+  .container
+    .row
+      .col.eight
+        h2 #{recentPostsTitle}
+        
+      .col.four
+        h2 #{sidebarTitle}
+  
+
+include partials/footer

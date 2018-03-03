@@ -1,5 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose');
+const pageConfig = require('../pageConfig.js');
+
+// TODO: remove once config functionality is in place
+pageConfig.pageIntro = 'Login to get started';
 
 const router = express.Router();
 
@@ -13,7 +17,7 @@ mongoose.connect(connection, (err) => {
 const User = require('../models/users.js');
 
 router.get('/', (req, res) => {
-  res.render('./login')
+  res.render('login', pageConfig)
 })
 
 router.post('/userLogin', (req, res) => {

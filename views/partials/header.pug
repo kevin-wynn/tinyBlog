@@ -1,3 +1,13 @@
-extends ./layouts/default.pug
 block header
   .header
+    .brand
+      p #{title}
+    .navigation
+      ul
+        li
+          a(href="/posts") Posts
+        li
+          a(href="/categories") Categories
+        li
+          a(href="/login") Login
+    

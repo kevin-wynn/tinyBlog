@@ -1,5 +1,14 @@
-head
-  title Tiny Blog
-  link(rel='stylesheet', href='../../public/css/main.css')
-  script(src="../../public/js/util.min.js")
-  script(src="../../public/js/app.js")
+block header
+  .header
+    .brand
+      p #{title}
+    .navigation
+      ul
+        li
+          a(href="/users") Users
+        li
+          a(href="/posts") Posts
+        li
+          a(href="/categories") Categories
+        li
+          a(href="/login") Log Out

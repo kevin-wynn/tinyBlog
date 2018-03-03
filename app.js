@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const morgan = require('morgan');
+// TODO: remove pageConfig once config functionality is in place
+const pageConfig = require('./pageConfig.js');
 
 const app = express();
 
@@ -50,15 +52,18 @@ const logout = require('./routes/logout');
 const admin = require('./routes/admin');
 const users = require('./routes/users');
 const posts = require('./routes/posts');
+const newSetup = require('./routes/newSetup');
 
+app.use('/newSetup', newSetup);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/admin', admin);
 app.use('/admin/users', users);
 app.use('/admin/posts', posts);
 
+// TODO: remove pageConfig once config functionality is in place
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Hey', message: 'Hello there!' });
+  res.render('index', pageConfig);
 });
 
 app.listen(3000, () => {
