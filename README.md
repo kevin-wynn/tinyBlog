@@ -15,4 +15,4 @@ Ideally you can just download [Compass](https://www.mongodb.com/download-center#
 - Where ever you want the code to live, from the terminal you can git clone the project with `git clone https://github.com/Robo-House/tinyBlog`
 - Once the project has been cloned run `npm i` to install the dependencies
 - Run `grunt` from the terminal to start the server
-- Navigate to `localhost:3005` to hit the site
+- Navigate to `localhost:3000` to hit the site
