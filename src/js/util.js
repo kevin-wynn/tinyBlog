@@ -82,10 +82,7 @@ var TB = {
      */
     objectifyForm: (formArray) => {
       var returnObj = {};
-      console.log(formArray.length);
       for (var i = 0; i < formArray.length; i++){
-        console.log(formArray[i]['name']);
-        console.log(formArray[i]['value']);
         returnObj[formArray[i]['name']] = formArray[i]['value'];
       }
       return returnObj;

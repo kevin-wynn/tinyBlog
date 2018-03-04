@@ -1,24 +1,36 @@
+extends ../layouts/admin-default
+
 include ../mixins/forms.pug
 
-html
-  include partials/header.pug
-  body.users
-    include partials/navigation.pug
-    div.container.users-body
+include partials/header
+
+block content
+  .container.users
+    .row
       h1 Users
-      div.toolbar
+    .row
+      .toolbar
         ul
           li#newUserButton.action Add New User
-      div.new-user
-        form#newUserForm.hidden(action="/users/createUser" method="POST").tb-form
-          +formRow('text', 'name', 'name', 'Name')
-          +formRow('text', 'email', 'email', 'Email', true)
-          +formRow('text', 'username', 'username', 'Username', true)
-          +formRow('text', 'password', 'password', 'Password', true)
-          +dateRow('dob', 'Date of Birth')
-        +buttonRow('submit', 'submit', 'saveUserButton', 'Save')
-      p Here are all your users
-      div.users
-        for user in users
-          p #{user.name}
-    include partials/footer.pug
+      .row
+        .new-user
+          form#newUserForm.tb-form.hidden
+            +formRow('text', 'name', 'name', 'Name')
+            +formRow('text', 'email', 'email', 'Email', true)
+            +formRow('text', 'username', 'username', 'Username', true)
+            +formRow('text', 'password', 'password', 'Password', true)
+            +dateRow('dob', 'Date of Birth')
+            +buttonRow('submit', 'submit', 'saveUserButton', 'Save')
+      .row
+        p All Users:
+        ul.users-list
+          for user in users
+            if user.active
+              li.active
+                p #{user.name} - #{user.username}: #{user.email}
+            else
+              li.inactive
+                p #{user.name} - #{user.username}: #{user.email}
+  
+
+include partials/footer

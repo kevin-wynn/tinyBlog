@@ -1,14 +1,17 @@
 block header
-  .header
+  .header.admin
     .brand
-      p #{title}
+      p
+        a(href="../") tinyBlog Admin
     .navigation
       ul
         li
-          a(href="/users") Users
+          a(href="/admin/posts") Posts
         li
-          a(href="/posts") Posts
+          a(href="/admin/users") Users
         li
-          a(href="/categories") Categories
+          a(href="/admin/categories") Categories
         li
-          a(href="/login") Log Out
+          a(href="/logout") Log Out
+        li.user
+          p #{user.name}

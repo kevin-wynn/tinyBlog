@@ -1,20 +1,27 @@
+extends ../layouts/admin-default
+
 include ../mixins/forms.pug
 
-html
-  include partials/header.pug
-  body.posts
-    include partials/navigation.pug
-    div.container.posts-body
+include partials/header
+
+block content
+  .container.posts
+    .row
       h1 Posts
-      div.toolbar
+    .row
+      .toolbar
         ul
           li#newPostButton.action Create Post
-      div.new-post
-        form#newPostForm.hidden.tb-form
+    .row
+      .new-post
+        form#newPostForm.tb-form.hidden
           +formRow('text', 'title', 'title', 'Post Title', required)
           +formTextArea('content', 'content', 'Post Content')
           +dateRow('date', 'Post Date', true)
-        +buttonRow('button', 'submit', 'savePostButton', 'Save')
-      div#newPostSuccess.success.hidden
-      p Here are all your posts
-  include partials/footer.pug
+          +checkboxRow('false', 'draft', 'draft', 'Draft')
+          +buttonRow('button', 'submit', 'savePostButton', 'Save')
+          +hiddenAuthorRow()
+      #newPostSuccess.success.hidden
+  
+
+include partials/footer

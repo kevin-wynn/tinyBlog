@@ -22,6 +22,8 @@ router.post('/createUser', (req, res) => {
   // create a new user
   var newUser = new User(req.body);
 
+  console.log(newUser);
+
   User.findOne({username: req.body.username}, (err, user) => {
     if(err) throw err;
     if(!user) {

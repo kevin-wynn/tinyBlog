@@ -16,6 +16,12 @@ router.get('/', (req, res) => {
   res.render('./admin/posts')
 })
 
+router.get('/getAllPosts', (req, res) => {
+  Post.find({}, (err, posts) => {
+    console.log(posts);
+  })
+})
+
 router.post('/createPost', (req, res) => {
 
   // create a new post

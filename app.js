@@ -3,8 +3,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const morgan = require('morgan');
-// TODO: remove pageConfig once config functionality is in place
-const pageConfig = require('./pageConfig.js');
 
 const app = express();
 
@@ -53,19 +51,16 @@ const admin = require('./routes/admin');
 const users = require('./routes/users');
 const posts = require('./routes/posts');
 const newSetup = require('./routes/newSetup');
+const home = require('./routes/home');
 
+app.use('/', home);
 app.use('/newSetup', newSetup);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/admin', admin);
-app.use('/admin/users', users);
-app.use('/admin/posts', posts);
-
-// TODO: remove pageConfig once config functionality is in place
-app.get('/', (req, res) => {
-  res.render('index', pageConfig);
-});
+app.use('/users', users);
+app.use('/posts', posts);
 
 app.listen(3000, () => {
-  console.log('tinyBlog listening on port 3000');
+  console.log('tinyBlog running on port 3000');
 });

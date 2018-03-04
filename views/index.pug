@@ -8,6 +8,13 @@ block content
     .row
       .col.eight
         h2 #{recentPostsTitle}
+        ul
+          for post in posts
+            if !post.draft
+              li.post
+                h2.title #{post.title}
+                span.posted #{moment(post.date).format("ll")}
+                span.content-truncated #{post.content}
         
       .col.four
         h2 #{sidebarTitle}

@@ -1,9 +1,31 @@
-doctype html
-html
-  include partials/header.pug
-  body.admin-home
-    include partials/navigation.pug
-    div.container.admin-home-body
-      h1 Tiny Blog Admin
-      p Here you can manage your blog
-  include partials/footer.pug
+extends ../layouts/admin-default
+
+include partials/header
+
+block content
+  .container.admin-home
+    .row
+      .col.twelve
+        h3 TODOs for the admin side:
+        ul
+          li Admin home page needs some work here, show charts and shit of users and posts and traffic to the site? Speaking of which we need to include traffic shit, some sort of tracking in the db for page hits etc. Our own stuff - no outside dependencies
+          li Create/Edit/Delete users
+          li Create/Edit/Delete posts
+          li Create/Edit/Delete categories
+      .col.six
+        h3 User details:
+        p Logged in as #{user.username}
+        p User name #{user.name}
+        p User date of birth #{user.dob}
+        p User email #{user.email}
+      .col.six        
+        h3 Session details:
+        p Session cookie path: #{session.cookie.path}
+        p Session cookie expires: #{session.cookie._expires}
+        p Session cookie original max age: #{session.cookie.originalMaxAge}
+        p Session cookie http only?: #{session.cookie.httpOnly}
+        p Session cookie secure: #{session.cookie.secure}
+      
+      
+
+include partials/footer

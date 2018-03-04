@@ -20,9 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if(savePostButton) {
     savePostButton.addEventListener('click', () => {
       const formData = TB.util.objectifyForm(newPostForm);
-      TB.util.request('/admin/posts/createPost', 'POST', formData, function(resp) {
-        TB.request.showSuccessMessageOnEl(newPostSuccess, 'Post Saved');
-      });
+      TB.request.request('POST', '/posts/createPost', formData)
+      .then((resp) => {
+        // TODO: Success message and close form, refresh posts list
+        console.log('resp', resp);
+      }).catch((err) => {
+        // TODO: Error messaging - need form validation
+        console.log('err', err);
+      })
     })
   }
 

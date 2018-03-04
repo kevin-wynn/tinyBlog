@@ -1,9 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose');
-const pageConfig = require('../pageConfig.js');
 
-// TODO: remove once config functionality is in place
-pageConfig.pageIntro = 'Login to get started';
+// TODO: remove pageConfig once config functionality is in place
+const pageConfig = require('../pageConfig.js');
 
 const router = express.Router();
 

@@ -16,7 +16,8 @@ const userSchema = mongoose.Schema({
       unique: true
     }
   },
-  dob: Date
+  dob: Date,
+  active: Boolean
 });
 
 userSchema.pre('save', function(next) {

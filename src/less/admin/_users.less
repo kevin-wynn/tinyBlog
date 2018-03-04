@@ -1,8 +1,22 @@
 .users {
-  .users-body {
-    height: 500px;
-    .new-user {
-      margin-top: 15px;
+  min-height: 500px;
+  .new-user {
+    margin-top: 15px;
+  }
+
+  .users-list {
+    .active {
+      color: @green;
+      p {
+        color: #666;
+      }
+    }
+
+    .inactive {
+      color: @orange;
+      p {
+        color: #666;
+      }
     }
   }
 }
