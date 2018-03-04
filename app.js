@@ -58,8 +58,8 @@ app.use('/newSetup', newSetup);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/admin', admin);
-app.use('/users', users);
-app.use('/posts', posts);
+app.use('/admin/users', users);
+app.use('/admin/posts', posts);
 
 app.listen(3000, () => {
   console.log('tinyBlog running on port 3000');
