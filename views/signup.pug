@@ -1,22 +1,23 @@
-extends ../../layouts/admin-default
+extends layouts/default
 
-include ../../mixins/forms
+include mixins/forms
 
-include ../partials/header
+include partials/header
+include partials/splash
 
 block content
-  .container.user-edit
+  .container.login-home
+    .row.new-user.centered
+      h1 Get started today
     .row
-      h1 Creating A User
-      .row.new-user
+      .col.three
+      .col.six
         form#newUserForm.tb-form
           +formRow('text', 'name', 'name', 'Name')
           +formRow('text', 'email', 'email', 'Email', true)
           +formRow('text', 'username', 'username', 'Username', true)
           +formRow('text', 'password', 'password', 'Password', true)
           +dateRow('dob', 'Date of Birth')
-        .row
+        .row.centered
           +button('submit', 'submit', 'saveUserButton', 'Save')
           +buttonLink('button', 'cancel', '../users' ,'Cancel')
-
-include ../partials/footer

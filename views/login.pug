@@ -13,5 +13,10 @@ block content
         form#loginForm.tb-form
           +formRow('text', 'username', 'username', 'Username', true)
           +formRow('password', 'password', 'password', 'Password', true)
-        .row
+        .row.centered
           +button('button', 'login', 'loginButton', 'Log In')        
+    .row
+      .col.three
+      .col.six
+        p.centered Not a user yet? 
+          a(href="/signup") Sign up here

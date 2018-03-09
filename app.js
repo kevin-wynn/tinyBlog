@@ -34,6 +34,15 @@ app.all('*', checkUser);
 
 function checkUser(req, res, next) {
   if (~req.path.indexOf('admin')) {
+
+    /**
+     * This sets the admin on the session so you dont have to keep logging back in each time the server restarts
+     * Will def need to be removed before any deployments
+     *
+     * TODO: Remove this before deploy
+     */
+    req.session.user = {"_id":{"$oid":"5aa1fb2647d3f46fc111941b"},"name":"Admin","email":"admin@tinyblog.com","username":"admin","dob":{"$date":"2018-02-10T17:00:00.000Z"},"active":true,"__v":0}
+
     if(req.session.user) {
       app.locals.user = req.session.user;
     } else {
@@ -45,6 +54,7 @@ function checkUser(req, res, next) {
 }
 
 // routes
+const signup = require('./routes/signup');
 const login = require('./routes/login');
 const logout = require('./routes/logout');
 const admin = require('./routes/admin');
@@ -53,6 +63,7 @@ const posts = require('./routes/posts');
 const home = require('./routes/home');
 
 app.use('/', home);
+app.use('/signup', signup);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/admin', admin);
