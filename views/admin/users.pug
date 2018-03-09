@@ -10,35 +10,25 @@ block content
       h1 Users
     .row
       .toolbar
-        ul
-          li#newUserButton.action Add New User
-      .row
-        .new-user
-          form#newUserForm.tb-form.hidden
-            +formRow('text', 'name', 'name', 'Name')
-            +formRow('text', 'email', 'email', 'Email', true)
-            +formRow('text', 'username', 'username', 'Username', true)
-            +formRow('text', 'password', 'password', 'Password', true)
-            +dateRow('dob', 'Date of Birth')
-            +buttonRow('submit', 'submit', 'saveUserButton', 'Save')
-      .row
-        table.tb-table.users-table
-          tbody
-            tr
-              th Active
-              th Name
-              th Username
-              th Email
-              th Date of Birth
-              th
-            for user in users
-              tr(id=user._id).user-row
-                td #{user.active}
-                td #{user.name}
-                td #{user.username}
-                td #{user.email}
-                td #{moment(user.dob).format("MM-DD-YYYY")}
-                td 
-                  a(href="/admin/user/"+user._id) Edit
+        +buttonLink('button', 'createUser', 'user/createUser', 'Create New User')
+    .row
+      table.tb-table.users-table
+        tbody
+          tr
+            th Active
+            th Name
+            th Username
+            th Email
+            th Date of Birth
+            th
+          for user in users
+            tr(id=user._id).user-row
+              td #{user.active}
+              td #{user.name}
+              td #{user.username}
+              td #{user.email}
+              td #{moment(user.dob).format("MM-DD-YYYY")}
+              td 
+                a(href="/admin/user/"+user._id) Edit
 
 include partials/footer

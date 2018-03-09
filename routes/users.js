@@ -26,12 +26,16 @@ router.get('/users', (req, res) => {
 })
 
 // gets a users information by its id
-router.get('/admin/user/:id', (req, res) => {
+router.get('/admin/user/getById/:id', (req, res) => {
   User.findOne({_id: req.params.id}, (err, user) => {
     if(err) console.log('There was an error getting the user', err);
     user.dob = moment(user.dob);
     res.render('admin/users/editUser', {user: user, moment: moment})
   })
+})
+
+router.get('/admin/user/createUser', (req, res) => {
+  res.render('admin/users/createUser');
 })
 
 router.put('/admin/user/updateUser', (req, res) => {
@@ -42,7 +46,7 @@ router.put('/admin/user/updateUser', (req, res) => {
   })
 })
 
-router.post('/createUser', (req, res) => {
+router.post('/admin/user/createUser', (req, res) => {
   // create a new user
   var newUser = new User(req.body);
   User.findOne({username: req.body.username}, (err, user) => {

@@ -14,6 +14,8 @@ block content
           +formRow('text', 'email', 'email', 'Email', true, user.email)
           +formRow('text', 'username', 'username', 'Username', true, user.username)
           +dateRow('dob', 'Date of Birth', true, moment(user.dob).format('YYYY-MM-DD'))
-        +buttonRow('button', 'submit', 'saveEditUserButton', 'Save')
+        .row
+          +button('button', 'submit', 'saveEditUserButton', 'Save')
+          +buttonLink('button', 'cancel', '../users' ,'Cancel')
 
 include ../partials/footer

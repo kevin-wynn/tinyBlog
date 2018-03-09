@@ -1,0 +1,21 @@
+extends ../../layouts/admin-default
+
+include ../../mixins/forms
+
+include ../partials/header
+
+block content
+  .container.user-edit
+    .row
+      h1 Creating A User
+      .row.new-user
+        form#newUserForm.tb-form
+          +formRow('text', 'name', 'name', 'Name')
+          +formRow('text', 'email', 'email', 'Email', true)
+          +formRow('text', 'username', 'username', 'Username', true)
+          +formRow('text', 'password', 'password', 'Password', true)
+          +dateRow('dob', 'Date of Birth')
+        .row
+          +button('submit', 'submit', 'saveUserButton', 'Save')
+
+include ../partials/footer

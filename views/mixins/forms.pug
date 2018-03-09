@@ -32,6 +32,12 @@ mixin hiddenAuthorRow(name, id, value)
   .row
     input(type='hidden' name='author' id='author' value=user._id)
 
-mixin buttonRow(type, name, id, buttonText)
-  .row
-    button(type=type name=name id=id action=action method=method).tb-button #{buttonText}
+mixin button(type, name, id, buttonText)
+  button(type=type name=name id=id action=action method=method).tb-button #{buttonText}
+
+mixin buttonLink(type, action, link, buttonText)
+  a(href=link)
+    if action == 'cancel'
+      button(type=type).tb-button.cancel #{buttonText}
+    else
+      button(type=type).tb-button #{buttonText}

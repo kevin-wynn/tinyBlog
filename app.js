@@ -6,15 +6,6 @@ const morgan = require('morgan');
 
 const app = express();
 
-// create a db connection
-const connection = 'mongodb://localhost:27017/tinyBlog';
-
-mongoose.connect(connection, (err) => {
-    if (err) throw err;
-});
-
-const User = require('./models/users.js');
-
 // morgan logger
 app.use(morgan('tiny'))
 
@@ -42,12 +33,6 @@ app.set('view engine', 'pug');
 app.all('*', checkUser);
 
 function checkUser(req, res, next) {
-  // to keep from having to log in all the time during dev server restarts
-  User.findOne({_id: '5a80e07aa6239b73e556528f'}, (err, user) => {
-    req.session.user = user;
-    req.session.save();
-  });
-
   if (~req.path.indexOf('admin')) {
     if(req.session.user) {
       app.locals.user = req.session.user;

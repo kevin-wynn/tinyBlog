@@ -19,8 +19,9 @@ block content
           +formTextArea('content', 'content', 'Post Content')
           +dateRow('date', 'Post Date', true)
           +checkboxRow('false', 'draft', 'draft', 'Draft')
-          +buttonRow('button', 'submit', 'savePostButton', 'Save')
           +hiddenAuthorRow()
+        .row
+          +button('button', 'submit', 'savePostButton', 'Save')
       #newPostSuccess.success.hidden      
     .row
       table.tb-table.posts-table
