@@ -7,9 +7,8 @@ A tiny mongo based blog
 
 ## Database
 Ideally you can just download [Compass](https://www.mongodb.com/download-center#compass) to get an easy GUI for the database. You'll need to install mongo and then in Compass you'll probably connect to `http://localhost:27017`
-- You'll need to create a database called `tinyBlog`
-
-`TODO: Create a grunt task to create sample content for users, posts, categories, and site info`
+- Create a database called `tinyBlog`
+- From project directory run `node dbReset` to update collections with sample data
 
 ## Environment
 - Where ever you want the code to live, from the terminal you can git clone the project with `git clone https://github.com/Robo-House/tinyBlog`
