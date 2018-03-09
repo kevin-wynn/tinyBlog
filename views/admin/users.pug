@@ -21,6 +21,7 @@ block content
             th Email
             th Date of Birth
             th
+            th
           for user in users
             tr(id=user._id).user-row
               td #{user.active}
@@ -30,5 +31,7 @@ block content
               td #{moment(user.dob).format("MM-DD-YYYY")}
               td 
                 a(href="/admin/user/"+user._id) Edit
+              td
+                a(href="/admin/user/deleteUser/"+user._id) Delete
 
 include partials/footer
