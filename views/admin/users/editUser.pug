@@ -1,0 +1,19 @@
+extends ../../layouts/admin-default
+
+include ../../mixins/forms
+
+include ../partials/header
+
+block content
+  .container.user-edit
+    .row
+      h1 Editing User #{user.username}
+      .row.editing-user
+        form#editUserForm.tb-form
+          +formRow('text', 'name', 'name', 'Name', true, user.name)
+          +formRow('text', 'email', 'email', 'Email', true, user.email)
+          +formRow('text', 'username', 'username', 'Username', true, user.username)
+          +dateRow('dob', 'Date of Birth', true, moment(user.dob).format('YYYY-MM-DD'))
+        +buttonRow('button', 'submit', 'saveEditUserButton', 'Save')
+
+include ../partials/footer

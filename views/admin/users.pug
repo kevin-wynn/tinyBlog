@@ -1,6 +1,6 @@
 extends ../layouts/admin-default
 
-include ../mixins/forms.pug
+include ../mixins/forms
 
 include partials/header
 
@@ -22,15 +22,23 @@ block content
             +dateRow('dob', 'Date of Birth')
             +buttonRow('submit', 'submit', 'saveUserButton', 'Save')
       .row
-        p All Users:
-        ul.users-list
-          for user in users
-            if user.active
-              li.active
-                p #{user.name} - #{user.username}: #{user.email}
-            else
-              li.inactive
-                p #{user.name} - #{user.username}: #{user.email}
-  
+        table.tb-table.users-table
+          tbody
+            tr
+              th Active
+              th Name
+              th Username
+              th Email
+              th Date of Birth
+              th
+            for user in users
+              tr(id=user._id).user-row
+                td #{user.active}
+                td #{user.name}
+                td #{user.username}
+                td #{user.email}
+                td #{moment(user.dob).format("MM-DD-YYYY")}
+                td 
+                  a(href="/admin/user/"+user._id) Edit
 
 include partials/footer

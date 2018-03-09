@@ -8,7 +8,7 @@ block content
     .row
       .col.eight
         h2 #{recentPostsTitle}
-        ul
+        ul.posts
           for post in posts
             if !post.draft
               li.post

@@ -17,6 +17,24 @@ var TB = {
     },
 
     /**
+     * Returns an array of elements by className
+     * @param  {string} cls the className to get elements by
+     * @return {array}      the array of elements with that className
+     */
+    getByClass: (cls) => {
+      return document.getElementsByClassName(cls);
+    },
+
+    /**
+     * Traverses an elements attributes for its id value to return
+     * @param  {string} el the element to traverse
+     * @return {id}        the value of the id of the element
+     */
+    getElementsIdValue: (el) => {
+      return el.attributes.id.value;
+    },
+
+    /**
      * Change a button's text
      *
      * @param {string} el      the element to change
@@ -33,7 +51,7 @@ var TB = {
      * @param {string} newText the new text to update to
      * @param {string} color   the hex value background color to change to
      */
-    changeButtonTextAndColor = (el, newText, color) => {
+    changeButtonTextAndColor: (el, newText, color) => {
       el.innerHTML=newText;
       el.style.backgroundColor=color;
     },
@@ -82,8 +100,9 @@ var TB = {
      */
     objectifyForm: (formArray) => {
       var returnObj = {};
+      var date;
       for (var i = 0; i < formArray.length; i++){
-        returnObj[formArray[i]['name']] = formArray[i]['value'];
+        returnObj[formArray[i].name] = formArray[i].value;
       }
       return returnObj;
     }
@@ -107,6 +126,8 @@ var TB = {
         xhr.setRequestHeader("Content-Type", "application/json");
         if(type == 'POST') {
           xhr.send(JSON.stringify(params));
+        } else if (type == 'PUT') {
+          xhr.send(JSON.stringify(params))
         } else if (type == 'GET') {
           xhr.send();
         }
@@ -140,5 +161,10 @@ var TB = {
 
   admin = {
 
+  },
+
+  ui = {
+
   }
+
 }

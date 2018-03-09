@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const router = express.Router();
 
@@ -12,14 +13,35 @@ mongoose.connect(connection, (err) => {
 
 const Post = require('../models/posts.js');
 
-router.get('/', (req, res) => {
-  res.render('./admin/posts')
+getAllPosts = (cb) => {
+  Post.find({}, (err, allPosts) => {
+    return cb(allPosts)
+  });
+}
+
+router.get('/admin/posts', (req, res) => {
+  getAllPosts((posts) => {
+    // truncate text and add ellipsis if longer than 250 characters
+    // format date to be readable with moment
+    posts.map((post, i) => {
+      post.content = post.content.substring(0,100);
+      post.content += '...';
+    })
+
+    res.render('./admin/posts', {posts: posts, moment: moment})
+  });
+})
+
+router.get('/posts', (req, res) => {
+  getAllPosts((posts) => {
+    res.render('./posts', {posts: posts, moment: moment})
+  });
 })
 
 router.get('/getAllPosts', (req, res) => {
-  Post.find({}, (err, posts) => {
-    console.log(posts);
-  })
+  getAllPosts((posts) => {
+    res.send({posts: posts})
+  });
 })
 
 router.post('/createPost', (req, res) => {

@@ -1,11 +1,11 @@
-mixin formRow(type, name, id, labelText, required)
+mixin formRow(type, name, id, labelText, required, value)
   .row
     label(for=name).tb-label.col.three #{labelText}
     if isRequired
       span.required
-        input(name=name id=id type=type).tb-input.col.nine
+        input(name=name id=id type=type value=value).tb-input.col.nine
     else
-      input(name=name id=id type=type).tb-input.col.nine
+      input(name=name id=id type=type value=value).tb-input.col.nine
       
 mixin formTextArea(name, id, labelText)
   .row
@@ -13,15 +13,15 @@ mixin formTextArea(name, id, labelText)
     br
     textarea(name=name id=id).tb-textarea
 
-mixin dateRow(name, labelText, required)
+mixin dateRow(name, labelText, required, value)
   - var isRequired = required;
   .row
     label(for=name).tb-label.date.col.three #{labelText}
     if isRequired
       span.required
-        input(type='date' name=name).tb-input.date.col.five
+        input(type='date' name=name value=value).tb-input.date.col.five
     else
-      input(type='date' name=name).tb-input.date.col
+      input(type='date' name=name value=value).tb-input.date.col
 
 mixin checkboxRow(value, name, id, labelText)
   .row

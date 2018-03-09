@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if(!newPostForm.classList.contains('hidden')) {
         TB.util.changeButtonTextAndColor(newPostButton, 'Add New Post', '#3498DB');
       } else {
-        TB.util.changeButtonTextAndColor(newPostButton, 'Cancel Adding Post', '#E87E04');
+        TB.util.changeButtonTextAndColor(newPostButton, 'Cancel Adding Post', '#D35400');
       }
 
       TB.util.toggleVisibility(newPostForm);

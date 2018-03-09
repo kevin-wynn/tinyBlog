@@ -6,6 +6,15 @@ const morgan = require('morgan');
 
 const app = express();
 
+// create a db connection
+const connection = 'mongodb://localhost:27017/tinyBlog';
+
+mongoose.connect(connection, (err) => {
+    if (err) throw err;
+});
+
+const User = require('./models/users.js');
+
 // morgan logger
 app.use(morgan('tiny'))
 
@@ -33,6 +42,12 @@ app.set('view engine', 'pug');
 app.all('*', checkUser);
 
 function checkUser(req, res, next) {
+  // to keep from having to log in all the time during dev server restarts
+  User.findOne({_id: '5a80e07aa6239b73e556528f'}, (err, user) => {
+    req.session.user = user;
+    req.session.save();
+  });
+
   if (~req.path.indexOf('admin')) {
     if(req.session.user) {
       app.locals.user = req.session.user;
@@ -50,16 +65,14 @@ const logout = require('./routes/logout');
 const admin = require('./routes/admin');
 const users = require('./routes/users');
 const posts = require('./routes/posts');
-const newSetup = require('./routes/newSetup');
 const home = require('./routes/home');
 
 app.use('/', home);
-app.use('/newSetup', newSetup);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/admin', admin);
-app.use('/admin/users', users);
-app.use('/admin/posts', posts);
+app.use(users);
+app.use(posts);
 
 app.listen(3000, () => {
   console.log('tinyBlog running on port 3000');

@@ -76,3 +76,46 @@ ul {
     margin-left: 15px;
   }
 }
+
+.overlay {
+  position: absolute;
+  z-index: 999999999;
+  background: rgba(0,0,0,.5);
+  top: 0; bottom: 0; right: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal {
+  position: absolute;
+  z-index: 99999999999;
+  background: #fff;
+  width: 60vw;
+  min-height: 520px;
+  top: 10%;
+  left: 20%;
+  right: 20%;
+  bottom: 10%;
+
+  .modal-header {
+    font-size: 150%;
+    text-align: center;
+    padding: 10px;
+    background: @purple;
+    color: #fff;
+    margin-bottom: 25px;
+  }
+
+  .modal-body {
+    padding: 10px;
+  }
+
+  .modal-footer {
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    button {
+      margin: 10px;
+    }
+  }
+}

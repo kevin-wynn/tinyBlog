@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
+    "dbReset": "dbReset.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -45,6 +46,7 @@
     "grunt": "^1.0.2",
     "grunt-contrib-less": "^1.4.1",
     "grunt-contrib-uglify-es": "^3.3.0",
-    "grunt-contrib-watch": "^1.0.0"
+    "grunt-contrib-watch": "^1.0.0",
+    "update-mongo": "0.0.4"
   }
 }

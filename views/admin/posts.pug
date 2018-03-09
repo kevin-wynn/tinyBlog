@@ -21,7 +21,26 @@ block content
           +checkboxRow('false', 'draft', 'draft', 'Draft')
           +buttonRow('button', 'submit', 'savePostButton', 'Save')
           +hiddenAuthorRow()
-      #newPostSuccess.success.hidden
-  
+      #newPostSuccess.success.hidden      
+    .row
+      table.tb-table.posts-table
+        tbody
+          tr
+            th Draft
+            th(width="100") Post Date
+            th Title
+            th Content
+            th Author
+            th
+          for post in posts
+            tr(id=post._id).post-row
+              td #{post.draft}
+              td #{moment(post.date).format("MM-DD-YYYY")}
+              td #{post.title}
+              td #{post.content}
+              td #{post.author}
+              td 
+                a(href="/admin/post/"+post._id) Edit
+
 
 include partials/footer
