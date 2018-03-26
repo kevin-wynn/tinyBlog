@@ -33,7 +33,7 @@ app.set('view engine', 'pug');
 app.all('*', checkUser);
 
 function checkUser(req, res, next) {
-  if (~req.path.indexOf('admin')) {
+  if (~req.path.indexOf('admin') || ~req.path.indexOf('login')) {
 
     /**
      * This sets the admin on the session so you dont have to keep logging back in each time the server restarts
@@ -42,6 +42,10 @@ function checkUser(req, res, next) {
      * TODO: Remove this before deploy
      */
     req.session.user = {"_id":{"$oid":"5aa1fb2647d3f46fc111941b"},"name":"Admin","email":"admin@tinyblog.com","username":"admin","dob":{"$date":"2018-02-10T17:00:00.000Z"},"active":true,"__v":0}
+
+    if(~req.path.indexOf('login')) {
+      res.redirect('/admin')
+    }
 
     if(req.session.user) {
       app.locals.user = req.session.user;

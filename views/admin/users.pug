@@ -30,7 +30,7 @@ block content
               td #{user.email}
               td #{moment(user.dob).format("MM-DD-YYYY")}
               td 
-                a(href="/admin/user/"+user._id) Edit
+                a(href="/admin/user/getById/"+user._id) Edit
               td
                 a(href="/admin/user/deleteUser/"+user._id) Delete
 

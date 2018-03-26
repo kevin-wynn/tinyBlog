@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(formData);
       TB.request.request('PUT', '/admin/user/updateUser', formData)
       .then((resp) => {
-        // TODO: Success message and close form, take user back to users page
-        console.log(resp);
+        // take admin back to users page
+        location.pathname = '/admin/users';
       }).catch((err) => {
         // TODO: Error messaging - need form validation
         console.log('error:', err);;
