@@ -6,8 +6,10 @@ const morgan = require('morgan');
 
 const app = express();
 
+require('dotenv').config();
+
 // create a db connection
-const connection = 'mongodb://localhost:27017/tinyBlog';
+const connection = 'mongodb+srv://'+process.env.mongoUsername+':'+process.env.mongoPassword+'@'+process.env.mongoCluster+'.mongodb.net/test?retryWrites=true';
 
 mongoose.connect(connection, (err) => {
     if (err) throw err;
@@ -43,10 +45,10 @@ app.all('*', checkUser);
 
 function checkUser(req, res, next) {
   // to keep from having to log in all the time during dev server restarts
-  User.findOne({_id: '5a80e07aa6239b73e556528f'}, (err, user) => {
-    req.session.user = user;
-    req.session.save();
-  });
+  // User.findOne({_id: '5a80e07aa6239b73e556528f'}, (err, user) => {
+  //   req.session.user = user;
+  //   req.session.save();
+  // });
 
   if (~req.path.indexOf('admin')) {
     if(req.session.user) {

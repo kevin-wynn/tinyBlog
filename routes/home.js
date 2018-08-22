@@ -4,8 +4,10 @@ const moment = require('moment');
 
 const router = express.Router();
 
+require('dotenv').config();
+
 // create a db connection
-const connection = 'mongodb://localhost:27017/tinyBlog';
+const connection = 'mongodb+srv://'+process.env.mongoUsername+':'+process.env.mongoPassword+'@'+process.env.mongoCluster+'.mongodb.net/test?retryWrites=true';
 
 mongoose.connect(connection, (err) => {
     if (err) throw err;
